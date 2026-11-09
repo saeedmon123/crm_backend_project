@@ -432,11 +432,11 @@ def interaction_analysis(request):
 #-----------------------------------------------
 #creation:
 @api.patch("/customers/{customer_id}/loyalty", tags=["customer"])
-def update_customer_loyalty(request, data: update_loyalty):
+def update_customer_loyalty(request, customer_id: int, data: update_loyalty):
     '''  update the customer loyalty based on the customer_id  '''
     try:
         # Retrieve the existing customer object
-        customer = Customer.objects.get(pk=data.customer_id)
+        customer = Customer.objects.get(pk=customer_id)
 
         if data.LoyaltyThreshold_id != 0 and customer.LoyaltyThreshold is None:
             loyalty_model_info = create_loyalty_model(data.LoyaltyThreshold_id, customer.id)
@@ -468,11 +468,11 @@ def update_customer_loyalty(request, data: update_loyalty):
 
 
 @api.patch("/customers/{customer_id}/subscription", tags=["customer"])
-def update_customer_subscription(request, data: update_subscription):
+def update_customer_subscription(request, customer_id: int, data: update_subscription):
     '''  update the customer subscription based on the customer_id  '''
     try:
         # Retrieve the existing customer object
-        customer = Customer.objects.get(pk=data.customer_id)
+        customer = Customer.objects.get(pk=customer_id)
 
         # Handle Subscription
         if data.Subscription_id != 0:

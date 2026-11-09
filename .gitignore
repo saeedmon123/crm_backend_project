@@ -1,0 +1,15 @@
+# Virtual environment & downloaded packages
+venv/
+downloaded_packages/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local database & secrets
+db.sqlite3
+.env
+
+# Editor files
+.vscode/
+.idea/
